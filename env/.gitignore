@@ -1,11 +1,11 @@
 # Ignore the virtual environment
 env/
 
-# Ignore Python bytecode files
+# Ignore Python bytecode
 __pycache__/
 *.pyc
 *.pyo
 
-# Ignore system files (macOS, Windows)
+# Ignore system files
 .DS_Store
 Thumbs.db
