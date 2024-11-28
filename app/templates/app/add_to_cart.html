@@ -1,12 +1,63 @@
 {% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Add Item to Cart</h1>
     <form method="POST">
         {% csrf_token %}
         <label for="product_name">Product Name:</label>
-        <input type="text" id="product_name" name="product_name" required><br>
+        <input type="text" id="product_name" name="product_name" placeholder="Enter product name" required>
+        
         <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" value="1" min="1" required><br>
+        <input type="number" id="quantity" name="quantity" value="1" min="1" required>
+        
         <button type="submit">Add to Cart</button>
     </form>
+</body>
+</html>
 {% else %}
-    <p>Please <a href="{% url 'login' %}">log in</a> to add items to your cart.</p>
+<p>Please <a href="{% url 'login' %}">log in</a> to add items to your cart.</p>
 {% endif %}
