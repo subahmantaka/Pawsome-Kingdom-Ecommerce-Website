@@ -55,8 +55,8 @@ ROOT_URLCONF = 'ec.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / 'templates'],  # Optionally add a global templates folder
+        'APP_DIRS': True,  # Ensure Django looks for templates within each app
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -77,13 +77,14 @@ WSGI_APPLICATION = 'ec.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pawsome_kingdom',  # Name of your MySQL database
-        'USER': 'root',  # Your MySQL username
-        'PASSWORD': 'helloworld',  # Your MySQL password
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'pawsome_kingdom',  
+        'USER': 'root',            
+        'PASSWORD': 'helloworld',  
+        'HOST': 'localhost',       
+        'PORT': '3306',             
     }
 }
+
 
 
 
@@ -127,3 +128,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = '/login/'  #login url
+
+
