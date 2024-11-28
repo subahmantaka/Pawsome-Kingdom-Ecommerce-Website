@@ -1,0 +1,3 @@
+username: pawsome kingdom
+email:pawsome@gmail.com
+password:pawsome123

@@ -1,0 +1,12 @@
+{% if user.is_authenticated %}
+    <h2>Your Cart</h2>
+    <ul>
+        {% for item in cart_items %}
+            <li>{{ item.product_name }} (x{{ item.quantity }}) 
+                <a href="{% url 'delete_from_cart' item.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Please <a href="{% url 'login' %}">log in</a> to view your cart.</p>
+{% endif %}
