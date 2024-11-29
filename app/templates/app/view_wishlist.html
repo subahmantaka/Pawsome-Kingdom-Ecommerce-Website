@@ -1,0 +1,82 @@
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Wishlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        a {
+            padding: 8px 15px;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        a.btn-remove {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Wishlist &#9829;</h2>
+        <ul>
+            {% for item in wishlist_items %}
+            <li>
+                {{ item.product_name }}
+                <div>
+                    <a href="{% url 'remove_from_wishlist' item.id %}" class="btn-remove">Remove</a>
+                    <a href="{% url 'move_to_cart' item.id %}" class="btn-move">Move to Cart</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+{% else %}
+    <p>Please <a href="{% url 'login' %}">log in</a> to view your wishlist.</p>
+{% endif %}

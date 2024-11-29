@@ -43,3 +43,12 @@ class Cart(models.Model):
             str: Product name and quantity formatted as 'Product Name (xQuantity)'.
         """
         return f"{self.product_name} (x{self.quantity})"
+
+
+class Wishlist(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    product_name=models.CharField(max_length=255)
+    added_on=models.DateTimeField(auto_now_add=True)
+
+    def _str_(self):
+        return f"{self.product_name}"
