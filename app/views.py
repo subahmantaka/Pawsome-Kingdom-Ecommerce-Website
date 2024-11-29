@@ -15,18 +15,35 @@ def add_to_cart(request):
 
     **Functionality**:
     - Handles POST requests to add an item to the cart.
-    - If the request is a GET request, renders the `add_to_cart.html` template.
+    - Renders the `add_to_cart.html` template with the product list.
+    - Handles search functionality to find and add specific products.
 
     **Returns**:
     - Redirects to the `view_cart` page upon successful addition.
     - Renders the `add_to_cart.html` template for GET requests.
     """
+    # Sample product data 
+    products = [
+        {"name": "Cat Food", "image_url": "/static/images/1.png"},
+        {"name": "Dog Food", "image_url": "/static/images/2.png"},
+        {"name": "Bird Seed", "image_url": "/static/images/3.png"},
+    ]
+
+    search_query = request.GET.get('search', '')
+    if search_query:
+        
+        products = [product for product in products if search_query.lower() in product['name'].lower()]
+
     if request.method == 'POST':
         product_name = request.POST.get('product_name')
         quantity = int(request.POST.get('quantity', 1))
         Cart.objects.create(user=request.user, product_name=product_name, quantity=quantity)
         return redirect('view_cart')
-    return render(request, 'app/add_to_cart.html')
+
+    
+    return render(request, 'app/add_to_cart.html', {'products': products, 'search_query': search_query})
+
+
 
 @login_required
 def view_cart(request):

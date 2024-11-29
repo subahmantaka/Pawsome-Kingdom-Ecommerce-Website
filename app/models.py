@@ -40,7 +40,7 @@ class Cart(models.Model):
         Returns the product name and quantity.
 
         Returns:
-            str: Product name and quantity formatted as 'Product Name (xQuantity)'.
+            str: a formatted string
         """
         return f"{self.product_name} (x{self.quantity})"
 
