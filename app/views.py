@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .models import Cart
+from .models import Cart,Wishlist
 
 """
 Condition:
@@ -59,3 +59,88 @@ def delete_from_cart(request, item_id):
     cart_item = Cart.objects.get(id=item_id, user=request.user)
     cart_item.delete()
     return redirect('view_cart')
+
+
+
+
+@login_required
+def add_to_wishlist(request):
+    """
+    Adds an product to wishlist
+
+    **Functionality**:
+    -A list of already available products with picture and name is displayed on website from where the user
+     can click on the wishlist button and add to the wishlist
+    -User can also search for the name of a product and also add it to wishlist
+    
+
+    **Returns**:
+    -redirects to view_wishlist webpage after an item was added to wishlist
+
+    """
+    products = [
+        {"name": "Cat Food", "image_url": "/static/images/1.png"},
+        {"name": "Dog Food", "image_url": "/static/images/2.png"},
+        {"name": "Bird Seed", "image_url": "/static/images/3.png"},
+    ]
+
+    if request.method == 'POST':
+        product_name = request.POST.get('product_name')
+        Wishlist.objects.create(user=request.user, product_name=product_name)
+        return redirect('view_wishlist')
+
+    # Pass the list of products 
+    return render(request, 'app/add_to_wishlist.html', {'products': products})
+
+
+
+
+
+@login_required
+def view_wishlist(request):
+    """
+    Currently Displays the items added in wishlist 
+
+    **Functionality:**
+    -User can move an item from wishlist to add it to cart 
+    -User can view current items in wishlist
+
+    **Returns**:
+    -redirects to view_wishlist webpage after an item was added to wishlist
+    """
+    wishlist_items=Wishlist.objects.filter(user=request.user)
+    return render(request,'app/view_wishlist.html',{'wishlist_items':wishlist_items})
+
+@login_required
+def remove_from_wishlist(request,item_id):
+    """
+    Removes an item from wishlist 
+
+    **Functionality:**
+    -If any item is no longer desired by the user,the user can remove it from their wishlist by clicking on the 
+     remove button
+
+     **Returns**:
+    -redirects to view_wishlist webpage after an item was added to wishlist
+    """
+    wishlist_item=Wishlist.objects.get(id=item_id,user=request.user)
+    wishlist_item.delete()
+    return redirect('view_wishlist')
+
+@login_required
+def move_to_cart(request,item_id):
+    """
+    An item can be added to cart directly from the wishlist
+
+    **Functionality:**
+    -If User wishes to purchase any items currently added in their wishlist , they can do so by moving that item to 
+     cart and the item will be added to the cart .After that the user can purchase the product using normal "add_to_cart" function
+
+     **Returns**:
+    -redirects to view_wishlist webpage after an item was added to wishlist
+    """
+    wishlist_item=Wishlist.objects.get(id=item_id,user=request.user)
+    Cart.objects.create(user=request.user,product_name=wishlist_item.product_name,quantity=1)
+    wishlist_item.delete()
+    return redirect('view_wishlist')
+
