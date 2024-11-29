@@ -1,3 +1,4 @@
+{% if user.is_authenticated %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,24 +67,32 @@
             margin: 0.5rem 0;
             color: #333;
         }
-        .wishlist-button {
+        .buttons-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+        }
+        .wishlist-button, .cart-button {
             background-color: transparent;
             border: none;
             cursor: pointer;
             font-size: 1.5rem;
-            color: #ccc;
             transition: color 0.3s;
         }
         .wishlist-button:hover {
             color: #ff6666;
         }
+        .cart-button:hover {
+            color: #28a745;
+        }
     </style>
 </head>
 <body>
+    <!--Basic html for adding an item to wishlist-->
     <div class="container">
         <h1>Products and Wishlist</h1>
 
-        <!-- Search Form -->
+        <!--  Search for  Product and add to wishlist-->
         <div class="search-form">
             <form method="POST" action="{% url 'add_to_wishlist' %}">
                 {% csrf_token %}
@@ -92,39 +101,66 @@
             </form>
         </div>
 
-        <!-- Product Grid -->
+        <!-- Product Card Details-->
         <div class="product-grid">
-            <!-- Manually updated product cards -->
+            <!--Product 1-->
             <div class="product-card">
                 <img src="/static/images/1.png" alt="Cat Food">
                 <div class="product-name">Cat Food</div>
-                <form method="POST" action="{% url 'add_to_wishlist' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="product_name" value="Cat Food">
-                    <button class="wishlist-button" type="submit">❤️</button>
-                </form>
+                <div class="buttons-container">
+                    <form method="POST" action="{% url 'add_to_cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_name" value="Cat Food">
+                        <input type="hidden" name="quantity" value="1">
+                        <button class="cart-button" type="submit">🛒</button>
+                    </form>
+                    <form method="POST" action="{% url 'add_to_wishlist' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_name" value="Cat Food">
+                        <button class="wishlist-button" type="submit">❤️</button>
+                    </form>
+                </div>
             </div>
-
+            <!--Product 2-->
             <div class="product-card">
                 <img src="/static/images/2.png" alt="Dog Food">
                 <div class="product-name">Dog Food</div>
-                <form method="POST" action="{% url 'add_to_wishlist' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="product_name" value="Dog Food">
-                    <button class="wishlist-button" type="submit">❤️</button>
-                </form>
+                <div class="buttons-container">
+                    <form method="POST" action="{% url 'add_to_cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_name" value="Dog Food">
+                        <input type="hidden" name="quantity" value="1">
+                        <button class="cart-button" type="submit">🛒</button>
+                    </form>
+                    <form method="POST" action="{% url 'add_to_wishlist' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_name" value="Dog Food">
+                        <button class="wishlist-button" type="submit">❤️</button>
+                    </form>
+                </div>
             </div>
-
+            <!--Product 3-->
             <div class="product-card">
                 <img src="/static/images/3.png" alt="Bird Seed">
                 <div class="product-name">Bird Seed</div>
-                <form method="POST" action="{% url 'add_to_wishlist' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="product_name" value="Bird Seed">
-                    <button class="wishlist-button" type="submit">❤️</button>
-                </form>
+                <div class="buttons-container">
+                    <form method="POST" action="{% url 'add_to_cart' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_name" value="Bird Seed">
+                        <input type="hidden" name="quantity" value="1">
+                        <button class="cart-button" type="submit">🛒</button>
+                    </form>
+                    <form method="POST" action="{% url 'add_to_wishlist' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_name" value="Bird Seed">
+                        <button class="wishlist-button" type="submit">❤️</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+{% else %}
+    <p>Please <a href="{% url 'login' %}">log in</a> to add items to your wishlist.</p>
+{% endif %}

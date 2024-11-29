@@ -40,12 +40,24 @@ class Cart(models.Model):
         Returns the product name and quantity.
 
         Returns:
-            str: Product name and quantity formatted as 'Product Name (xQuantity)'.
+            str: a formatted string
         """
         return f"{self.product_name} (x{self.quantity})"
 
 
 class Wishlist(models.Model):
+    """
+    -Allows User to add an item to wishlist 
+
+    **Functionality**:
+    -can add an item to wishlist
+    -if user wants, can move the item to cart for purchase
+
+    **Parameter**:
+    -user: the customer who adds an item to wishlist
+    -product_name: name of the item to be added
+    -added_on: date and time at which item was added 
+    """
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     product_name=models.CharField(max_length=255)
     added_on=models.DateTimeField(auto_now_add=True)
