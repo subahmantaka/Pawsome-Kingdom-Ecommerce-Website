@@ -115,9 +115,69 @@ python -m venv env
 **4.Install Project Dependencies**
 Install the python packages
 ```bash
+winget install --id Python.Python.3.12 -e
+```
+
+Install MySql
+```bash
+pip install mysqlclient
+```
+
+```bash
 pip install django mysqlclient
 ```
 
+Install Django
+```bash
+pip install django
+```
+**5. Start a New Django Project**
+
+```bash
+django-admin startproject ec
+```
+**6.Create a Django App**
+```bash
+python manage.py startapp app
+```
+
+**7.Set Up Database**
+Use MySQL for maintaining the Database
+```bash
+CREATE DATABASE pawsome_kingdom;
+```
+
+**8.Configure Django Settings**
+Configure the Settings in your django settings to change the databse into MySQL
+```bash
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pawsome_kingdom',  
+        'USER': 'root',            
+        'PASSWORD': 'helloworld',  
+        'HOST': 'localhost',       
+        'PORT': '3306',             
+    }
+}
+```
+**9.Appy Migrations**
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+**10.Create SuperUser**
+This SuperUser is created to operate the Django Admin.The username and password of SuperUser can be found in **superuser.TXT** file
+```bash
+python manage.py createsuperuser
+```
+
+**11.Run The Django Server**
+Run the django default server to start the server.Then use the specific urls in **urls.py** to access your desired webpages
+```bash
+python manage.py runserver
+```
 
 
 
