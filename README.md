@@ -179,6 +179,90 @@ Run the django default server to start the server.Then use the specific urls in 
 python manage.py runserver
 ```
 
+**12.Project Structure Overview**
+```bash
+ecomm/
+├── ec/  # Django project folder
+│   ├── settings.py
+│   ├── urls.py
+│   └── ...
+├── app/  # Django app folder
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── ...
+├── static/
+│   ├── images/
+│   │   └── ...
+├── test/  # Unit tests folder
+│   └── test_cart.py
+└── ...
+```
+## Dependencies:
+
+- Python
+- Django
+- MySQL
+
+## User Story
+
+1. Managing Cart Items
+2. Managing Wishlist
+3. Search and View Products
+4. View Order
+5. Contact Us
+6. Make Payment
+7. View Profile
+
+## Pushing in GitHub
+
+-Fork the repository
+-create a branch for each user story function
+- commit changes
+  ```bash
+  git checkout -b feature-name
+  ```
+- add
+ ```bash
+  git add.
+  ```
+- push to your branch
+ ```bash
+  git commit -m "Description of changes"
+```
+
+- Submit pull request
+  ```bash
+  git push origin feature-name
+  ```
+  
+- Merge the branch with master branch
+
+
+## Licence
+This project is licensed under the MIT License. See the **LICENSE** file for more details.
+
+## Acknowledgement
+
+We would like to thank our faculty for guiding us thoughout the project and also our team members who were assigned the following parts:
+
+**Suhana Islam**- Managing Cart Items ,Managing Wishlist
+
+**Nusaiba Sharifeen**-Payment,View profile,View order
+
+**Subah Mantaka**-View and Search product,Contact Us
+
+We also took the help of the tools to complete our project:
+
+-**Django** : Frameowork of our project
+
+-**Python** : Programming Lnaguage we used
+
+-**MySQL**: Database we used
+
+-**Discord**: Used it for all commmunication process
+
+-**Trello**: Used to update our work progress efficiently
 
 
  
