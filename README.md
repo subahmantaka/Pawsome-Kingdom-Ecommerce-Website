@@ -4,11 +4,11 @@
 ## Table of Contents
 - [Description](#description)
 - [Features](#features)
-- [Technologies Used](#technologies-used)
+- [Softwares Used](#ssoftwares-used)
 - [Getting Started](#getting-started)
 - [Dependencies](#dependencies)
-- [User Stories](#user-stories)
-- [Contributing](#contributing)
+- [User Story](#user-story)
+- [Pushing in Github](#pushing-in-github)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
 
