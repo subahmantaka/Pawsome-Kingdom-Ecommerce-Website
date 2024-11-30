@@ -72,3 +72,53 @@ website or their order, they can visit the **"Contact Us"** page to fill out the
 **9.Contact Us:**
 - User can file any complaint regarding any issue with their order or the website by filling out the complaint form in this page
 - User can reach out to **Customer Support Team** for any kind of queries using the contact information(contact number,email address) provided in the website
+
+## Software Used:
+- **FrontEnd:** HTML,CSS
+- **Backend:** Python,Django
+- **Database:** MySQL
+- **Communication Purpose:** Discord
+- **Update Work:** Trello
+- **Code Submission and Backup:** GitHub,Wiki
+
+## Getting started
+## Requirement:
+- Python 3.12.4 or latest version
+- Django 5.0.7 or latest version
+
+## Installation:
+To run the Pawsome Kingdom Project in your local machine,please follow the following steps:
+
+
+**1.Clone The Repository**
+Clone the repository to your local machine using the command:
+```bash
+git clone https://github.com/subahmantaka/Pawsome-Kingdom-Ecommerce-Website.git
+```
+
+
+**2.Navigate to your Project Folder**
+```bash
+cd H:\ecomm
+```
+
+**3.Set Up a Virtual Environment:**
+create and activate a virtual environment for the dependencies
+
+***For Windows***
+
+```bash
+python -m venv env
+.\env\Scripts\activate
+```
+
+**4.Install Project Dependencies**
+Install the python packages
+```bash
+pip install django mysqlclient
+```
+
+
+
+
+ 
