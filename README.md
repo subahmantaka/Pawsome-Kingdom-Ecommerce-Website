@@ -6,6 +6,7 @@
 - [Features](#features)
 - [Softwares Used](#ssoftwares-used)
 - [Getting Started](#getting-started)
+- [Project Structure](#project-structure).
 - [Dependencies](#dependencies)
 - [User Story](#user-story)
 - [Pushing in Github](#pushing-in-github)
@@ -179,23 +180,35 @@ Run the django default server to start the server.Then use the specific urls in 
 python manage.py runserver
 ```
 
-**12.Project Structure Overview**
+## Project Structure
 ```bash
 ecomm/
 ├── ec/  # Django project folder
 │   ├── settings.py
 │   ├── urls.py
-│   └── ...
+│   ├── wsgi.py
+|   ├──asgi.py
+|   ├──_init_.py
+|   └──...
 ├── app/  # Django app folder
 │   ├── models.py
 │   ├── views.py
 │   ├── urls.py
+|   ├──_init_.py
+|   ├──admin.py
+|   ├──apps.py
 │   └── ...
 ├── static/
 │   ├── images/
 │   │   └── ...
 ├── test/  # Unit tests folder
 │   └── test_cart.py
+├── env
+│   ├──Include
+│   ├──Lib
+│   ├──Scripts
+│   ├──.gitignore
+│   ├──pyvenv.cfg
 └── ...
 ```
 ## Dependencies:
