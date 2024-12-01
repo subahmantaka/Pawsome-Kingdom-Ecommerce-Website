@@ -1,7 +1,7 @@
-Views
-=====
+Views Documentation
+====================
 
-.. automodule:: app.views
-   :members:
-   :undoc-members:
-   :show-inheritance:
+.. automodule:: myapp.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
