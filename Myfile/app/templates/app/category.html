@@ -1,0 +1,39 @@
+"""
+This template extends the 'app/base.html' base template and loads the static files. 
+It displays the products based on categories.
+"""
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Category{% endblock title %}
+
+{% block main-content %}   
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-sm-3">
+                {% for val in title %}
+                    {{val.title}}
+                {% endfor %}
+            
+            </div> 
+            <div class="col-sm-9">
+                <div class="row">
+                    {% for prod in product %}
+                        <div class="col text-center mb-4">
+                            <a href="{% url 'product-detail' prod.id %}" class="btn">
+                            <div>
+                                <img src="{{prod.product_image.url}}" width="300px" height="200px" />
+                                <div class="fw-bold">{{prod.title}}</div>
+                                <div class "fw-bold text-danger">
+                                    TK.{{prod.discounted_price}}/-
+                                    <small class="fw-light text-decoration-line-through">{{prod.selling_price}}</small>
+                                </div>    
+                            </div>   
+                            </a> 
+                    {% endfor %}
+                </div> 
+            
+            </div> 
+        </div> 
+    </div>     
+{% endblock main-content %}

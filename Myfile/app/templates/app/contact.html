@@ -1,0 +1,21 @@
+"""
+This template extends the 'app/base.html' base template. 
+It is the template for Contact Page.
+"""
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block main-content %}
+<div class="container mt-3">
+    <br>
+    <h2 class="text-center">Contact Us</h2>
+    <br>
+    <div class="row container">
+        <p class="fs-4 text-center">Phone : </p>
+        <p class="fs-4 text-center">Email : </p>
+    </div>
+</div>
+<br><br>        
+{% endblock main-content %}
